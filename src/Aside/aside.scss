@@ -1,0 +1,15 @@
+aside{
+    width: 30%;
+    height: 100%;
+    padding: 15px;
+    border: 1px outset #ffffff;
+    ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        li{
+            text-align: left
+        }
+    }
+}

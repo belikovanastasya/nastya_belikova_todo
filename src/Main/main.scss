@@ -11,6 +11,59 @@ main{
         height: 100%;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 15px 0;
+        padding: 15px;
+        ul{
+            width: 25%;
+            padding: 50px 0px;
+            height: 100%;
+            li{
+                cursor: pointer;
+                margin-bottom: 10px;
+            }
+        }
+        button{
+            width: 200px;
+            height: 50px;
+            background: #fff;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            transition: all .5s ease;
+            color: #009999;
+            margin-right: 20px;
+            &.active{
+              background: #009990; 
+              color: #fff 
+            }
+        }
+
     }
+}
+.tasksList{
+    div{
+        margin-bottom: 10px;
+    }
+    p{
+        margin-bottom: 10px;
+    }
+    a{
+        text-decoration: underline;
+    }
+}
+.modal{
+    padding: 10px;
+    border: 1px solid #ffffff;
+    width: 200px;
+}
+main{
+    height: 100%;
+    min-height: calc(100vh - 200px)
+}
+.geopos{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left
 }

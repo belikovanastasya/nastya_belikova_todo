@@ -54,7 +54,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env', 'react'],
-            plugins: ['syntax-dynamic-import']
+            plugins: ['syntax-dynamic-import', 'transform-class-properties']
           }
         }
       },
@@ -74,6 +74,9 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
+        options: {
+          emitWarning: true
+        }
       }       
 
     ]

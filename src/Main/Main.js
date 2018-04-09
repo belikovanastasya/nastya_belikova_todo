@@ -77,8 +77,7 @@ export class Main extends Component {
             </ul>
             {
               this.state.posts.length > 0 ? <ul className="posts">{this.state.posts.map(post =>
-                <li key={post.id}>{post.body}</li>)
-              }
+                <li key={post.id}>{post.body}</li>)}
               </ul> : <span>Posts are empty</span>
             }
             <Button />

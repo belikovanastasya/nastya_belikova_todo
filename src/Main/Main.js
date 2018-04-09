@@ -1,5 +1,7 @@
 import './main.scss';
 import { GeoBtn } from './Geo';
+import { Timer } from './Timer';
+
 
 export class UserTasks extends Component {
   constructor(props) {
@@ -51,7 +53,7 @@ export class Button extends Component {
 export class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = { users: [], posts: [] };
+    this.state = { users: [], posts: [], show: true };
     this.getUsers();
   }
   getUsers() {
@@ -68,20 +70,25 @@ export class Main extends Component {
     return (
       <main>
         <div className="wrapper">
-          <ul className="userList">
-            {this.state.users.map(user =>
-              <li key={user.id} onClick={() => this.getUserPosts(user.id)}>{user.name}</li>)
+          <div className="box_1">
+            <ul className="userList">
+              {this.state.users.map(user =>
+                <li key={user.id} onClick={() => this.getUserPosts(user.id)}>{user.name}</li>)}
+            </ul>
+            {
+              this.state.posts.length > 0 ? <ul className="posts">{this.state.posts.map(post =>
+                <li key={post.id}>{post.body}</li>)
+              }
+              </ul> : <span>Posts are empty</span>
             }
-          </ul>
-          {
-            this.state.posts.length > 0 ? <ul className="posts">{this.state.posts.map(post =>
-              <li key={post.id}>{post.body}</li>)
-            }
-            </ul> : <span>Posts are empty</span>
-          }
-          <Button />
-          <GeoBtn />
-          <UserTasks />
+            <Button />
+            <GeoBtn />
+            <UserTasks />
+          </div>
+          <div className="box_2">
+            {this.state.show && <Timer />}
+            <button onClick={() => this.setState({ show: false })}>Destroy</button>
+          </div>
         </div>
       </main>
     );

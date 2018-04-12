@@ -1,6 +1,6 @@
 import './main.scss';
 import { GeoBtn } from './Geo';
-
+import { Timer } from './Timer';
 
 export class UserTasks extends Component {
   constructor(props) {
@@ -84,7 +84,10 @@ export class Main extends Component {
             <GeoBtn />
             <UserTasks />
           </div>
-          
+          <div className="box_2">
+            {this.state.show && <Timer />}
+            <button onClick={() => this.setState({ show: false })}>Destroy</button>
+          </div>
         </div>
       </main>
     );

@@ -1,0 +1,33 @@
+.tab{
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+  .nav-tab{
+    padding: 0;
+    margin: 0;
+    width: 300px;
+    ul{
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      width: 100%;
+      justify-content: flex-start;
+      padding: 20px 0;
+      margin: 0;
+      li{
+        position: relative;
+        margin-right: 20px;
+        &:after{
+          content: '';
+          display: block;
+          position: absolute;
+          width: 1px;
+          height: 100%;
+          background: #fff;
+          right: -10px;
+          top: 0;
+        }
+      }
+    }
+  }
+}

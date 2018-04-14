@@ -1,9 +1,17 @@
+
+import PropTypes from 'prop-types';
 import './main.scss';
 import { Geo } from './Geo';
 import { Timer } from './Timer';
 import { EditableComponent } from './EditableComponent';
 import { TodoList } from './TodoList';
+import { Tabs } from '../Tabs';
 
+const tabs = [
+  { id: 0, title: 'Tab 1', content: 'Some text is here' },
+  { id: 1, title: 'Tab 2', content: 'Another content' },
+  { id: 2, title: 'Tab 3', content: 'Third text' }
+];
 
 export class UserTasks extends Component {
   constructor(props) {
@@ -48,10 +56,6 @@ export class Button extends Component {
     );
   }
 }
-// const Posts = ({ posts, field }) => {
-//   const post = posts.map(post => <li key={post.id}>{post.body}</li>);
-//   return <ul>{post}</ul>;
-// };
 export class Main extends Component {
   constructor(props) {
     super(props);
@@ -84,7 +88,6 @@ export class Main extends Component {
               </ul> : <span>Posts are empty</span>
             }
             <Button />
-          
             <UserTasks />
           </div>
           <div className="box_2">
@@ -96,8 +99,27 @@ export class Main extends Component {
             <TodoList />
             <Geo />
           </div>
+          <div className="box_4">
+            <Tabs tabs={tabs} />
+          </div>
         </div>
       </main>
     );
   }
 }
+UserTasks.propTypes = {
+  tasks: PropTypes.number,
+  done: PropTypes.number,
+  inProgress: PropTypes.number,
+  waiting: PropTypes.number
+};
+Button.propTypes = {
+  addClass: PropTypes.bool,
+  hidden: PropTypes.bool
+};
+Main.propTypes = {
+  users: PropTypes.array,
+  posts: PropTypes.array,
+  show: PropTypes.bool
+};
+

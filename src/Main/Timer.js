@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export class Timer extends Component {
   constructor(props) {
     super(props);
@@ -22,3 +24,7 @@ export class Timer extends Component {
     );
   }
 }
+Timer.propTypes = {
+  time: PropTypes.string
+};
+

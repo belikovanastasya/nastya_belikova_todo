@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export class EditableComponent extends Component {
   constructor(props) {
     super(props);
@@ -23,3 +25,13 @@ export class EditableComponent extends Component {
     );
   }
 }
+EditableComponent.propTypes = {
+  inputVisible: PropTypes.bool,
+  spanVisible: PropTypes.bool,
+  spanValue: PropTypes.string
+};
+EditableComponent.defaultProps = {
+  inputVisible: false,
+  spanVisible: true,
+  spanValue: 'Click to edit'
+};

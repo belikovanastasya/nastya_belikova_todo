@@ -1,19 +1,19 @@
-export const TabNav = ({ list, select }) => {
-  const onClick = (e, id) => {
-    select(id);
-    e.preventDefault();
-  };
-  return (
-    <div className="nav-tab">
-      <ul> {list.map(el =>
-        (<li key={el.id}>
-          <a
-            href="#"
-            onClick={e => onClick(e, el.id)}
-          >
-            {el.title}
-          </a>
-        </li>))}
-      </ul>
-    </div>);
+export const TabNav =
+   ({ links, select, activeIndex }) => {
+      const onClick = (e, index) => {
+      select(index);
+      e.preventDefault();
+ };
+ return (
+  <nav className="nav-tab">
+     <ul>{links.map((title, index) => (
+       <li className = {activeIndex === index ? 'active': ''}
+         key={index} >
+           <a href="#"
+                onClick={(e) => onClick(e, index)}
+           >{title}</a>
+         </li>)
+       )} 
+    </ul> 
+  </nav>); 
 };

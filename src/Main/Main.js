@@ -5,7 +5,7 @@ import { Geo } from './Geo';
 import { Timer } from './Timer';
 import { EditableComponent } from './EditableComponent';
 import { TodoList } from './TodoList';
-import { Tabs } from '../Tabs';
+import { Tabs, Tab } from '../Tabs';
 
 const tabs = [
   { id: 0, title: 'Tab 1', content: 'Some text is here' },
@@ -100,7 +100,17 @@ export class Main extends Component {
             <Geo />
           </div>
           <div className="box_4">
-            <Tabs tabs={tabs} />
+          <Tabs>
+            <Tab title='Tab 1'>
+                <h3>Tab header 1</h3>
+                <p>Some content is here</p>
+            </Tab>
+            <Tab title='Tab 2'>
+                <h3>Tab header 2</h3>
+                <p>Some content is here</p>
+                <time>{new Date().toLocaleDateString()}</time>
+            </Tab>
+          </Tabs>
           </div>
         </div>
       </main>

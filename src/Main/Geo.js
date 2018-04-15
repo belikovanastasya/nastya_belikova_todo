@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 export class Geo extends Component {
   constructor(props) {
     super(props);
@@ -39,8 +37,3 @@ export class Geo extends Component {
   }
 }
 
-
-Geo.propTypes = {
-  long: PropTypes.string,
-  lat: PropTypes.string
-};

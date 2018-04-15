@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 export class TodoList extends Component {
   constructor(props) {
     super(props);
@@ -65,8 +63,3 @@ export class TodoList extends Component {
     );
   }
 }
-
-TodoList.propTypes = {
-  originTodos: PropTypes.array,
-  search: PropTypes.string
-};

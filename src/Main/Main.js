@@ -1,5 +1,3 @@
-
-import PropTypes from 'prop-types';
 import './main.scss';
 import { Geo } from './Geo';
 import { Timer } from './Timer';
@@ -107,19 +105,3 @@ export class Main extends Component {
     );
   }
 }
-UserTasks.propTypes = {
-  tasks: PropTypes.number,
-  done: PropTypes.number,
-  inProgress: PropTypes.number,
-  waiting: PropTypes.number
-};
-Button.propTypes = {
-  addClass: PropTypes.bool,
-  hidden: PropTypes.bool
-};
-Main.propTypes = {
-  users: PropTypes.array,
-  posts: PropTypes.array,
-  show: PropTypes.bool
-};
-

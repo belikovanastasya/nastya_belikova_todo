@@ -29,6 +29,11 @@ export class Tabs extends Component {
     );
   }
 }
-Tabs.propTypes = {
-  content: PropTypes.string,
+TabNav.propType = {
+  list: PropTypes.array,
+  select: PropTypes.func
+};
+TabNav.defaultProps = {
+  list: [],
+  select: _ => _
 };

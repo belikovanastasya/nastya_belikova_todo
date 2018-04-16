@@ -1,39 +1,45 @@
 import PropTypes from 'prop-types';
-import { TabNav } from './TabNav';
+import { Tab, TabNav } from './';
 import './tab.scss';
 
-export class Tabs extends Component {
+export class Tabs extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { content: '' };
+    this.state = { id: props.selectedIndex };
   }
-  componentDidMount() {
-    this.clickTab(0);
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.selectedIndex !== selectedIndex.lastRow) {
+      return {
+        id: nextProps.selectedIndex
+      };
+    }
   }
   clickTab = (id) => {
-    this.setState({
-      content: this.props.tabs[id].content
-    });
+    this.setState({ id });
   }
+
   render() {
+    const { id } = this.state;
+    const tabs = this.props.children.filter(child => child.type === Tab);
+    const links = tabs.map(tab => tab.props.title);
+    const currentTab = tabs[id] && tabs[id].props.children;
     return (
-      <section className="tab">
+      <div className="tabs">
         <TabNav
-          list={
-              this.props.tabs.map(({ id, title }) => ({ id, title }))
-              }
           select={this.clickTab}
+          activeIndex={this.state.id}
+          links={links}
         />
-        <div>{this.state.content}</div>
-      </section>
+        <div className="tab-content"> {currentTab} </div>
+      </div>
     );
   }
 }
-TabNav.propType = {
-  list: PropTypes.array,
-  select: PropTypes.func
+Tabs.propTypes = {
+  selectedIndex: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number])
 };
-TabNav.defaultProps = {
-  list: [],
-  select: _ => _
+Tabs.defaultProps = {
+  selectedIndex: '0'
 };

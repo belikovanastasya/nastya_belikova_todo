@@ -3,13 +3,11 @@ import { Geo } from './Geo';
 import { Timer } from './Timer';
 import { EditableComponent } from './EditableComponent';
 import { TodoList } from './TodoList';
-import { Tabs } from '../Tabs';
+import { Tabs, Tab } from '../Tabs';
+import { UserList } from '../UserList';
+import { Gallery } from '../Gallery';
+import { TaskList } from '../TaskList';
 
-const tabs = [
-  { id: 0, title: 'Tab 1', content: 'Some text is here' },
-  { id: 1, title: 'Tab 2', content: 'Another content' },
-  { id: 2, title: 'Tab 3', content: 'Third text' }
-];
 
 export class UserTasks extends Component {
   constructor(props) {
@@ -57,34 +55,14 @@ export class Button extends Component {
 export class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = { users: [], posts: [], show: true };
-    this.getUsers();
-  }
-  getUsers() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(users => this.setState({ users }));
-  }
-  getUserPosts(id) {
-    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
-      .then(data => data.json())
-      .then(posts => this.setState({ posts }));
+    this.state = { show: true };
   }
   render() {
     return (
       <main>
         <div className="wrapper">
           <div className="box_1">
-            <ul className="userList">
-              {this.state.users.map(user =>
-                <li key={user.id} onClick={() => this.getUserPosts(user.id)}>{user.name}</li>)}
-            </ul>
-            {
-              this.state.posts.length > 0 ? <ul className="posts">{this.state.posts.map(post =>
-                <li key={post.id}>{post.body}</li>)
-              }
-              </ul> : <span>Posts are empty</span>
-            }
+            <UserList />
             <Button />
             <UserTasks />
           </div>
@@ -98,7 +76,19 @@ export class Main extends Component {
             <Geo />
           </div>
           <div className="box_4">
-            <Tabs tabs={tabs} />
+            <Tabs selectedIndex="1">
+              <Tab title="User List">
+                <h3>User List</h3>
+                <UserList />
+              </Tab>
+              <Tab title="Gallery">
+                <h2>Gallery</h2>
+                <Gallery />
+              </Tab>
+            </Tabs>
+          </div>
+          <div className="box_5">
+            <TaskList />
           </div>
         </div>
       </main>

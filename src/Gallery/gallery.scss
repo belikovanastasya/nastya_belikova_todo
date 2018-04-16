@@ -1,0 +1,21 @@
+.tab-content{
+  .gallery{
+    width: 100%;
+    ul{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      list-style: none;
+      li{
+        width: calc(100% /3);
+        height: 250px;
+        padding: 10px;
+        img{
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}

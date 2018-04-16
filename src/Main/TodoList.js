@@ -31,18 +31,20 @@ export class TodoList extends Component {
           {filterList
             .map(task => {
               return (
-                task.completed ? <li key={task.id} className="complited">{task.title}
-                  <span className="delete">
-                    <img src="./images/cancel.png" alt="" />
-                  </span>
-                  <span className="done"
-                  ><img src="./images/done.png" alt="" />
-                  </span>
-                  <span className="inProgress">
-                    <img src="./images/inprogress.png" alt="" />
-                  </span>
-                </li>
-                  : <li key={task.id}>{task.title}
+                task.completed ?
+                  <li key={task.id} className="complited">{task.title}
+                    <span className="delete">
+                      <img src="./images/cancel.png" alt="" />
+                    </span>
+                    <span className="done">
+                      <img src="./images/done.png" alt="" />
+                    </span>
+                    <span className="inProgress">
+                      <img src="./images/inprogress.png" alt="" />
+                    </span>
+                  </li>
+                  :
+                  <li key={task.id}>{task.title}
                     <span className="delete">
                       <img src="./images/cancel.png" alt="" />
                     </span>

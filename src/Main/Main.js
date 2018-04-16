@@ -1,6 +1,9 @@
 import './main.scss';
-import { GeoBtn } from './Geo';
+import { Geo } from './Geo';
 import { Timer } from './Timer';
+import { EditableComponent } from './EditableComponent';
+import { TodoList } from './TodoList';
+
 
 export class UserTasks extends Component {
   constructor(props) {
@@ -81,12 +84,17 @@ export class Main extends Component {
               </ul> : <span>Posts are empty</span>
             }
             <Button />
-            <GeoBtn />
+          
             <UserTasks />
           </div>
           <div className="box_2">
             {this.state.show && <Timer />}
             <button onClick={() => this.setState({ show: false })}>Destroy</button>
+          </div>
+          <div className="box_3">
+            <EditableComponent onLoose={text => console.log(text)} />
+            <TodoList />
+            <Geo />
           </div>
         </div>
       </main>

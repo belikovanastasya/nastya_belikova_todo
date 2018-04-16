@@ -36,10 +36,19 @@ main{
 
     }
 }
-.box_2{
+.box_2, .box_3{
     width: 100%;
     padding: 50px;
     border: 1px inset #ffffff;
+    margin-bottom: 20px;
+}
+.box_3{
+    min-height: 470px;
+    display: flex;
+    justify-content: space-between; 
+    .editBox{
+        margin-right: 20px;
+    }
 }
 button{
     width: 200px;

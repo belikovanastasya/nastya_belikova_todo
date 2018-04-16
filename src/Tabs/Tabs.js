@@ -7,6 +7,13 @@ export class Tabs extends React.Component {
     super(props);
     this.state = { id: props.selectedIndex };
   }
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.selectedIndex !== selectedIndex.lastRow) {
+      return {
+        id: nextProps.selectedIndex
+      };
+    }
+  }
   clickTab = (id) => {
     this.setState({ id });
   }

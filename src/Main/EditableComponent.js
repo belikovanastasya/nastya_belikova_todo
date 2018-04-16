@@ -7,6 +7,7 @@ export class EditableComponent extends Component {
       spanVisible: true,
       spanValue: 'Click to edit'
     };
+    
   }
   edit = () => {
     this.setState({ spanVisible: false });

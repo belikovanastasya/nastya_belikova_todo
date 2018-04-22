@@ -1,17 +1,19 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 import './navigation.scss';
 
-const navList = ['Home', 'Products', 'Contacts'];
+const navList = ['Home', 'Gallery', 'TaskList'];
 
-export const List = () => (
-  <ul>
-    {navList
-      .map((nav, index) => <li key={index}><a href={`/${nav.toLowerCase()}`}>{nav}</a></li>)}
-  </ul>
-);
-
-export const Navigation = () => (
+export const Navigation = ({ user }) => (
   <nav>
-    <List />
+    <ul>
+    <li>{user && <a href="/user">{user}</a>}</li>
+    {navList
+      .map((nav, index) => <li key={index}><NavLink
+        to={`/${nav.toLowerCase()}`}
+        exact
+        activeClassName = 'active'
+        >{nav}</NavLink></li>)}  
+  </ul>
   </nav>
 );

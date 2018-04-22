@@ -1,5 +1,5 @@
 import { Tabs, Tab } from '../Tabs';
-
+import { Link } from 'react-router-dom';
 export const TaskList = () => {
   const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
   const tasksInWeek = [
@@ -96,7 +96,16 @@ export const TaskList = () => {
           title={days[index]}
         >
           <ol>
-            {tasks.map(task => <li key={task.id}>{task.title}</li>)}
+            {tasks.map(task => <li key={task.id}>
+              <Link to={{
+                pathname: `/tasklist/${task.id}`,
+                state: {
+                  task
+                }
+              }}>
+                {task.title}
+              </Link>
+            </li>)}
           </ol>
           <button>Add new</button>
         </Tab>))

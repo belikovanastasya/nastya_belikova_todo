@@ -5,6 +5,12 @@ nav{
        li{
            margin-right: 10px;
            position: relative;
+           a{
+            &.active{
+                color: #006363
+           }
+           
+           }
            &:hover{
                &:after{
                    width: 100%;

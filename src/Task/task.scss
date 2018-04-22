@@ -1,0 +1,36 @@
+.task{
+  max-width: 600px;
+  margin: 0 auto;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+input{
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px inset #ffffff;
+  padding: 10px;
+  color: #FFFFFF;
+  font-size: 18px;
+  &:focus{
+    outline: none
+  }
+} 
+textarea{
+  width: 100%;
+  background: transparent;
+  border: none;
+  border: 1px inset #ffffff;
+  padding: 10px;
+  color: #FFFFFF;
+  font-size: 16px;
+  &:focus{
+    outline: none
+  }
+} 
+button{
+  margin-right: 0;
+}
+}

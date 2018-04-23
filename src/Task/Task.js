@@ -1,15 +1,14 @@
 import './task.scss';
+
+
 export class Task extends Component {
-
-    constructor(props) {
-      super(props);
-      this.days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
-      this.state = Object.assign({}, props.location.state.task)
-    }
-
-
+  constructor(props) {
+    super(props);
+    this.days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+    this.state = Object.assign({}, props.location.state.task);
+  }
   updateTask = () => {
-    console.log('updating...')
+    console.log('updating...');
   };
 
   changeInput = ({ target }) => {
@@ -40,10 +39,9 @@ export class Task extends Component {
           onChange={this.changeInput}
           required
         >
-      </textarea>
+        </textarea>
         <button>Save</button>
       </form>
     );
   }
 }
-

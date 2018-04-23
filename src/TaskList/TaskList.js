@@ -1,5 +1,7 @@
-import { Tabs, Tab } from '../Tabs';
 import { Link } from 'react-router-dom';
+import { Tabs, Tab } from '../Tabs';
+
+
 export const TaskList = () => {
   const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
   const tasksInWeek = [

@@ -1,0 +1,8 @@
+input{
+  &.error{
+    outline: 1px solid red
+  }
+  &.correct{
+    outline: 1px solid green
+  }
+}

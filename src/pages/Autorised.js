@@ -1,9 +1,9 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { Main } from './Main';
-import { Gallery } from './Gallery';
-import { TaskList } from './TaskList';
-import { Task } from './Task';
-import { NotFound } from './NotFound';
+import { Main } from '../components';
+import { Gallery } from '../pages';
+import { TaskList } from '../components';
+import { Task } from '../components';
+import { NotFound } from '../pages';
 
 
 export const Autorised = () => {

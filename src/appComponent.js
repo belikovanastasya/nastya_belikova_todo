@@ -1,7 +1,7 @@
 import React from 'react';
-import { Header } from './Header';
-import { Footer } from './Footer';
-import { Pages } from './Pages';
+import { Header } from './parts';
+import { Footer } from './parts';
+import { Pages } from './pages';
 import './appComponent.scss';
 
 

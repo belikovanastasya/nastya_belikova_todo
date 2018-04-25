@@ -1,6 +1,6 @@
 
 import './login.scss';
-
+import { login} from '../../servises'
 export const Loader = () => {
   return (
     <div className="loader_wrap">
@@ -23,17 +23,9 @@ export class Login extends Component {
     // setTimeout(() => {
     //   this.props.onLogin(true, value);
     // }, 2000);
-    fetch('http://localhost:8081/public/login', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-type': 'application/json; charset=utf-8'
-      },
-      body: JSON.stringify({ email: email.value, password: password.value })
-    })
-      .then(data => data.json())
+  login({email: email.value, password: password.value})
       .then((data) => {
-        onLogin(true, data);
+        this.props.onLogin(data);
       });
   }
   render() {

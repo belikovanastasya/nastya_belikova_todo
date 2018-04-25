@@ -7,7 +7,7 @@ const navList = ['Home', 'Gallery', 'TaskList'];
 export const Navigation = ({ user }) => (
   <nav>
     <ul>
-      <li>{user && <a href="/user">{user}</a>}</li>
+      <li>{user && <a href="/user">{user.firstName}</a>}</li>
       {navList
         .map((nav, index) => <li key={index}><NavLink
           to={`/${nav.toLowerCase()}`}

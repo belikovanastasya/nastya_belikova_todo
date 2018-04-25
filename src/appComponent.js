@@ -2,29 +2,38 @@ import React from 'react';
 import { Header } from './parts';
 import { Footer } from './parts';
 import { Pages } from './pages';
+import { checkUser } from './servises'
 import './appComponent.scss';
 
 
 export class App extends Component {
   state = {
-    login: false,
-    user: ''
+    user: undefined
   }
 
-  setLoginState = (login, user) => {
-    this.setState({ login, user });
+  setLoginState = (user) => {
+    this.setState({ user });
   }
+  componentDidMount() {
+    checkUser()
+      .then((data) => {
+        this.setLoginState(data);
+      })
+      .catch(err => console.log('Can\'t login', err));
+  }
+  
   render() {
-    const { login, user } = this.state;
+    const { user } = this.state;
     return (<React.Fragment>
       <Header
-        login={login}
         setLoginState={this.setLoginState}
         user={user}
       />
+      {user !== undefined ?
       <Pages
-        login={login}
-        setLoginState={this.setLoginState} />
+      login={user}
+      setLoginState={this.setLoginState} />
+       : 'Checking'}
       <Footer />
     </React.Fragment>
     );

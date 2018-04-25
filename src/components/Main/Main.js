@@ -1,13 +1,12 @@
-// import './main.scss';
-// import { Geo } from './Geo';
-// import { Timer } from './Timer';
-// import { EditableComponent } from './EditableComponent';
-// import { TodoList } from './TodoList';
-// import { Tabs, Tab } from '../Tabs';
-// import { UserList } from '../UserList';
-// import { Gallery } from '../Gallery';
-// import { TaskList } from '../TaskList';
-
+import './main.scss';
+import { Geo } from './Geo';
+import { Timer } from './Timer';
+import { EditableComponent } from './EditableComponent';
+import { TodoList } from './TodoList';
+import { Tabs, Tab } from '../Tabs';
+import { UserList } from '../UserList';
+import { Gallery } from '../../pages';
+import { TaskList } from '../TaskList';
 
 export class UserTasks extends Component {
   constructor(props) {

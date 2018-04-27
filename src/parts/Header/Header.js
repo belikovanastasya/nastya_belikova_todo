@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import './header.scss';
 import { Navigation } from '../Navigation';
+// import {  logOut } from '../../users'
 
 
 export class Header extends Component {

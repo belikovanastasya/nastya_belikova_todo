@@ -1,16 +1,10 @@
-import { request } from './rest'
+import { rest } from './rest'
 
-export const login = (data = {}) => request('/public/login',
-  'POST',
-  data,
-  {
-    headers: {
-      'Content-type': 'application/json; charset=utf-8'
-    }
-  }
-)
+export const login = (data = {}) => rest.post('public/login', data);
 
-export const checkUser = () => request('/public/checkUser', 'GET')
+export const logOut = () => rest.get('public/logout')
+
+export const checkUser = () => rest.get('public/checkUser');
 // export const login = (data = {}) =>
 //   fetch('http://localhost:8081/public/login', {
 //     method: 'POST',

@@ -2,7 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import './header.scss';
 import { Navigation } from '../Navigation';
-// import {  logOut } from '../../users'
+import { logOut } from '../../servises/users'
+import {  checkUser } from '../../servises/users'
 
 
 export class Header extends Component {
@@ -12,15 +13,19 @@ export class Header extends Component {
       createUser: false
     };
   }
+  logOut = () => {
+    logOut()
+    this.props.setLoginState(null);
+e
+  }
   render() {
-    const isLoginPage = location.href.includes('login');
     return (
       <header className="header">
         <div className="wrapper">
           <a href="/" className="logo">Logo</a>
-          {!isLoginPage && <button onClick={() => setLoginState()}>Logout</button>}
+          {this.props.user && <button onClick={this.logOut}>Logout</button>}
           <Navigation user={this.props.user} />
-          {!this.props.login && <button className="createUser" onClick={() => this.setState({ createUser: true })}>Create User</button>}
+          {!this.props.user && <button className="createUser" onClick={() => this.setState({ createUser: true })}>Create User</button>}
           {this.state.createUser && <Redirect to="/createuser" />}
         </div>
     </header>

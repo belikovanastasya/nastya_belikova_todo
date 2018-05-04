@@ -4,6 +4,7 @@ import { Gallery } from '../pages';
 import { TaskList } from '../components';
 import { Task } from '../components';
 import { NotFound } from '../pages';
+import { Success } from '../pages';
 
 
 export const Autorised = () => {
@@ -16,6 +17,8 @@ export const Autorised = () => {
       <Route path="/gallery" component={Gallery} />
       <Redirect from="/login" to="/home" />
       <Route component={NotFound} />
+      <Route path="/success" component = {Success}/>
+      
     </Switch>
   );
 };

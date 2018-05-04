@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Tabs, Tab } from '../Tabs';
 
 
-export const TaskList = () => {
+export const TaskList = (props) => {
   const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
   const tasksInWeek = [
     [
@@ -89,6 +89,12 @@ export const TaskList = () => {
       }
     ]
   ];
+ const  createNewTask = (day) => {
+    props.history.push(`tasklist/newtask?day=${day}`); 
+}
+  const getDay = () => { 
+    return props.location.search.replase(/\D+/, '')
+  }
   const currentDay = new Date().getDay();
   return (
     <Tabs selectedIndex={currentDay}>
@@ -109,7 +115,7 @@ export const TaskList = () => {
               </Link>
             </li>)}
           </ol>
-          <button>Add new</button>
+          <button onClick={() => createNewTask(index)}>Add new</button>
         </Tab>))
       }
     </Tabs>

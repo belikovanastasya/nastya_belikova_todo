@@ -26,7 +26,9 @@ export class Login extends Component {
   login({email: email.value, password: password.value})
       .then((data) => {
         this.props.onLogin(data);
-      });
+      })
+    .catch(err => console.log('Can\'t login', err))
+    
   }
   render() {
     return (

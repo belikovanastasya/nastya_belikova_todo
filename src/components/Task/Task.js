@@ -1,47 +1,85 @@
 import './task.scss';
+import { getTask, updateTask, createTask } from '../../servises/tasks';
+
 
 
 export class Task extends Component {
   constructor(props) {
     super(props);
-    this.days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
-    this.state = Object.assign({}, props.location.state.task);
-  }
-  updateTask = () => {
-    console.log('updating...');
-  };
 
-  changeInput = ({ target }) => {
-    this.setState({ [target.name]: { value: target.value } });
-  };
+    this.days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+
+    this.state = {
+      title: '',
+      description: '',
+      id: null
+    };
+  }
+
+  componentDidMount() {
+    const { task } = this.props.match.params;
+
+    if (task === 'newtask') {
+      this.setState({ day: this.getDay() });
+      return;
+    }
+
+    getTask(task)
+      .then(task => this.setState({ ...task }))
+  }
+
+  getDay() {
+    return this.props.location.search.replace(/\D+/, '') || '';
+  }
+
+  updateTask = (event) => {
+    const { task } = this.props.match.params;
+    let promise = task === 'newtask' ? createTask(this.state) : updateTask(this.state);
+    event.preventDefault();
+    promise
+    .then(() => this.props.history.push('/tasklist'))    
+  }
+
+  onChange = (event) => {
+    const { target } = event;
+
+    this.setState({ [target.name]: target.value });
+  }
 
   render() {
     const { title, description, day } = this.state;
+
     return (
       <form
-        className="task"
         onSubmit={this.updateTask}
       >
         <p>Day: {this.days[day]}</p>
         <input
           type="text"
-          placeholder="Enter a title"
           name="title"
           value={title}
-          onChange={this.changeInput}
+          onChange={this.onChange}
+          placeholder="Enter a title"
           required
         />
+        <br />
+        <br />
         <textarea
+          name="description"
           cols="30"
           rows="10"
-          name="description"
           value={description}
-          onChange={this.changeInput}
-          required
-        >
-        </textarea>
-        <button>Save</button>
+          onChange={this.onChange}
+        />
+
+        <br />
+        <br />
+        <input
+          type="submit"
+          value="Save"
+        />
       </form>
     );
   }
 }
+

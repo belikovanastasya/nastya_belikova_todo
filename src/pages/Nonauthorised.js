@@ -5,7 +5,10 @@ import { CreateUser } from '../components';
 export const NonAuthorised = ({ setLoginState }) => {
   return (
     <Switch>
-      <Route path="/createuser" component={CreateUser} />
+       <Route
+        path="/createuser"
+        render={() => <CreateUser excluded={[]} disabled={[]} onLogin={setLoginState} />}
+      />
       <Route
         path="/login"
         render={() => <Login onLogin={setLoginState} />}

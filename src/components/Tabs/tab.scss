@@ -1,5 +1,7 @@
 .tabs{
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 5px;
 }
 .nav-tab{
@@ -33,4 +35,13 @@
       }
     }
   }
+}
+
+.tab-content{
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  
 }

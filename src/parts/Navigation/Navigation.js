@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './navigation.scss';
 
-const navList = ['Home', 'Gallery', 'TaskList'];
+const navList = ['Home', 'Contacts', 'TaskList'];
 
 export const Navigation = ({ user }) => (
   <nav>

@@ -7,11 +7,15 @@ import { NotFound } from '../pages';
 import { Success } from '../pages';
 
 
-export const Autorised = () => {
+export const Autorised = ({ user }) => {
   return (
     <Switch>
       <Route path="/" exact component={Main} />
-      <Route path="/home" exact component={Main} />
+      {/* <Route path="/home" exact render={() => <Main user={user}} /> */}
+      <Route
+        path="/home"
+        render={() => <Main user={user} />}
+      />
       <Route path="/tasklist" exact component={TaskList} />
       <Route path="/tasklist/:task" component={Task} />
       <Route path="/gallery" component={Gallery} />

@@ -16,7 +16,7 @@ export class Header extends Component {
   logOut = () => {
     logOut()
     this.props.setLoginState(null);
-e
+
   }
   render() {
     return (

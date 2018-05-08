@@ -2,6 +2,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { Login } from './Login';
 import { CreateUser } from '../components';
 
+
 export const NonAuthorised = ({ setLoginState }) => {
   return (
     <Switch>
@@ -9,11 +10,13 @@ export const NonAuthorised = ({ setLoginState }) => {
         path="/createuser"
         render={() => <CreateUser excluded={[]} disabled={[]} onLogin={setLoginState} />}
       />
+      
       <Route
         path="/login"
         render={() => <Login onLogin={setLoginState} />}
       />
       <Redirect to="/login" />
+      
     </Switch>
   );
 };

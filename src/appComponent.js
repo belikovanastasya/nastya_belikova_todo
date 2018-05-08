@@ -1,6 +1,5 @@
 import React from 'react';
-import { Header } from './parts';
-import { Footer } from './parts';
+import { Header, Footer } from './parts';
 import { Pages } from './pages';
 import { checkUser } from './servises'
 import './appComponent.scss';
@@ -45,8 +44,9 @@ export class App extends Component {
       />
       {user !== undefined ?
       <Pages
-      login={user}
-      setLoginState={this.setLoginState} />
+          login={user}
+          setLoginState={this.setLoginState} 
+        />
        : 'Checking'}
       <Footer />
     </React.Fragment>

@@ -4,7 +4,7 @@ import { Gallery } from '../pages';
 import { TaskList } from '../components';
 import { Task } from '../components';
 import { NotFound } from '../pages';
-import { Success } from '../pages';
+
 
 
 export const Autorised = ({ user }) => {

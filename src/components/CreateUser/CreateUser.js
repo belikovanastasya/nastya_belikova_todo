@@ -3,7 +3,7 @@ import { createUser } from '../../servises/users';
 import { Form } from '../Form';
 
 
-export const CreateUser = (history) => {
+export const CreateUser = ({ history }) => {
   const create = (user) => {
     createUser(user)
       .then((user) => { 

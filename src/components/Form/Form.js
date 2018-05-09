@@ -27,18 +27,14 @@ export class Form extends Component {
       return null;
     }
     const state = {};
-
     Form.fields.forEach(({ id }) => (state[id] = { value: nextProps.data[id] }));
-
     return state;
   }
-
   setValue = ({ target }) => {
     this.setState({
       [target.name]: { value: target.value }
     });
   }
-
   validate = (index) => {
     const field = this.fields[index];
     const stateField = this.state[field.id];
@@ -60,54 +56,36 @@ export class Form extends Component {
         const { value, error } = this.state[id];
         return !value || error;
       });
-    }
+  }
 
-    getDisabledState() {
-      return this.getActualFields()
-        .some(({ id }) => {
-          const { value, error } = this.state[id];
-          return !value || error;
-        });
-    }
-  
     save = (event) => {
       const { state } = this;
       let error = '';
-  
       event.preventDefault();
-  
       if (state.password.value !== state.repeatPassword.value) {
         error = 'Passwords should be the same';
       }
-  
       this.setState({ error });
-  
       if (error) return;
       this.props.onSubmit(this.getFormValue());
     }
-  
     getFormValue() {
       const form = {};
-  
       this.fields
         .filter(field => !this.props.excluded.includes(field.id))
         .filter(field => !this.props.skipped.includes(field.id))
         .forEach(field => form[field.id] = this.state[field.id].value);
-  
       return form;
     }
-  
     getActualFields() {
       return this.fields
         .filter(field => !this.props.excluded.includes(field.id))
         .filter(field => !this.props.skipped.includes(field.id))
         .filter(field => !this.props.disabled.includes(field.id));
     }
-  
     render() {
       const { state, fields } = this;
       const { excluded, disabled } = this.props;
-  
       return (
         <form
           className="form"
@@ -117,7 +95,6 @@ export class Form extends Component {
             .filter(({ id }) => !excluded.includes(id))
             .map(({ label, secure, id }, index) => {
               const stateField = state[id];
-  
               return (
                 <li key={label}>
                   <input
@@ -135,24 +112,21 @@ export class Form extends Component {
               );
             })}
           </ul>
-  
           {state.error && <span className="error-text">{state.error}</span>}
-  
           <br/>
-  
           <input
             type="submit"
             value="Save"
             disabled={this.getDisabledState()}
           />
         </form>
-    );
-  }
+      );
+    }
 }
 
 Form.defaultProps = {
   excluded: [],
   disabled: [],
   skipped: [],
-  onSubmit: _=>_ 
+  onSubmit: _ => _ 
 };

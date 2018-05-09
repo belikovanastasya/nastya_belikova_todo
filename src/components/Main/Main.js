@@ -1,11 +1,7 @@
 import './main.scss';
-import { TaskList } from '../TaskList';
 import { Invitation } from './Invitation';
 
 export class Main extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <main>

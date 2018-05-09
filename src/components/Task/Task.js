@@ -2,7 +2,6 @@ import './task.scss';
 import { getTask, updateTask, createTask } from '../../servises/tasks';
 
 
-
 export class Task extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +24,7 @@ export class Task extends Component {
     }
 
     getTask(task)
-      .then(task => this.setState({ ...task }))
+      .then(task => this.setState({ ...task }));
   }
 
   getDay() {
@@ -34,12 +33,11 @@ export class Task extends Component {
 
   updateTask = (event) => {
     const { task } = this.props.match.params;
-    let promise = task === 'newtask' ? createTask(this.state) : updateTask(this.state);
+    const promise = task === 'newtask' ? createTask(this.state) : updateTask(this.state);
     event.preventDefault();
     promise
-    .then(() => this.props.history.push('/tasklist'))    
-  }
-
+      .then(() => this.props.history.push('/tasklist'));
+  };
   onChange = (event) => {
     const { target } = event;
 

@@ -1,6 +1,8 @@
 
 import './login.scss';
-import { login} from '../../servises'
+import { login } from '../../servises';
+
+
 export const Loader = () => {
   return (
     <div className="loader_wrap">
@@ -23,32 +25,31 @@ export class Login extends Component {
     // setTimeout(() => {
     //   this.props.onLogin(true, value);
     // }, 2000);
-  login({email: email.value, password: password.value})
+    login({email: email.value, password: password.value})
       .then((data) => {
         this.props.onLogin(data);
       })
-    .catch(err => console.log('Can\'t login', err))
-    
+      .catch(err => console.log('Can\'t login', err));
   }
   render() {
     return (
       !this.state.showLoader ?
         <div className="form_wrap">
-            <form onSubmit={this.submit}>
+          <form onSubmit={this.submit}>
             <input
-            type="text"
-            placeholder="Email"
-            name="email"
-            defaultValue="admin@a.com"
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            defaultValue="admin"
-            required
-          />
+              type="text"
+              placeholder="Email"
+              name="email"
+              defaultValue="admin@a.com"
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              defaultValue="admin"
+              required
+            />
             <input
               type="submit"
               value="Log in"
@@ -59,48 +60,3 @@ export class Login extends Component {
     );
   }
 }
-
-// export const Login = ({ onLogin }) => {
-//   const submit = (e) => {
-//     const { email, password } = e.target;
-
-//     e.preventDefault();
-
-//     fetch('http://localhost:8081/public/login', {
-//       method: 'POST',
-//       credentials: 'include',
-//       headers: {
-//         'Content-type': 'application/json; charset=utf-8'
-//       },
-//       body: JSON.stringify({ email: email.value, password: password.value })
-//     })
-//       .then(data => data.json())
-//       .then((data) => {
-//         onLogin(true, data);
-//       });
-//   };
-//   return (
-//     <form
-//       className="login"
-//       onSubmit={submit}
-//     >
-//       <input
-//         type="text"
-//         placeholder="Email"
-//         name="email"
-//         defaultValue="admin@a.com"
-//         required
-//       />
-
-//       <input
-//         type="password"
-//         name="password"
-//         placeholder="Password"
-//         defaultValue="admin"
-//         required
-//       />
-
-//       <input type="submit" value="Логин" />
-//     </form>
-//   );
-// };

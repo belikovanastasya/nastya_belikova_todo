@@ -1,18 +1,16 @@
 import React from 'react';
 import { Header, Footer } from './parts';
 import { Pages } from './pages';
-import { checkUser } from './servises'
+import { checkUser } from './servises';
 import './appComponent.scss';
 import { ToastContainer } from 'react-toastr';
 import { errObserver } from './servises/observer';
-
 
 
 export class App extends Component {
   state = {
     user: undefined
   }
-
   setLoginState = (user) => {
     this.setState({ user });
   }
@@ -30,7 +28,6 @@ export class App extends Component {
         <em>Error</em>
       ));
   }
-  
   render() {
     const { user } = this.state;
     return (<React.Fragment>
@@ -44,8 +41,8 @@ export class App extends Component {
       />
       {user !== undefined ?
       <Pages
-          login={user}
-          setLoginState={this.setLoginState} 
+          user={user}
+          setLoginState={this.setLoginState}
         />
        : 'Checking'}
       <Footer />

@@ -2,8 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import './header.scss';
 import { Navigation } from '../Navigation';
-import { logOut } from '../../servises/users'
-import {  checkUser } from '../../servises/users'
+import { logOut } from '../../servises/users';
 
 
 export class Header extends Component {
@@ -14,9 +13,8 @@ export class Header extends Component {
     };
   }
   logOut = () => {
-    logOut()
+    logOut();
     this.props.setLoginState(null);
-
   }
   render() {
     return (
@@ -28,7 +26,7 @@ export class Header extends Component {
           {!this.props.user && <button className="createUser" onClick={() => this.setState({ createUser: true })}>Create User</button>}
           {this.state.createUser && <Redirect to="/createuser" />}
         </div>
-    </header>
+      </header>
     );
   }
 }

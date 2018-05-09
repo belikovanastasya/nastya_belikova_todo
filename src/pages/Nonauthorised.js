@@ -6,17 +6,16 @@ import { Success } from './Success';
 export const NonAuthorised = ({ setLoginState }) => {
   return (
     <Switch>
-       <Route
+      <Route
         path="/createuser"
-        render={(props) => <CreateUser {...props} excluded={[]} disabled={[]} onLogin={setLoginState} />}
+        render={props => <CreateUser {...props} onLogin={setLoginState} />}
       />
-      <Route path="/success" component = {Success}/>
+      <Route path="/success" component={Success}/>
       <Route
         path="/login"
         render={() => <Login onLogin={setLoginState} />}
       />
       <Redirect to="/login" />
-      
     </Switch>
   );
 };

@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Tabs, Tab } from '../Tabs';
+import { Tabs, Tab } from '../../components/Tabs';
 import { getTasks } from '../../servises/tasks';
+import { days } from '../../constants'
+import './tasklist.scss'
 
-
-const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+//const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
 export class TaskList extends Component {
   constructor(props) {
@@ -14,14 +15,8 @@ export class TaskList extends Component {
   }
   componentDidMount() {
     getTasks()
-      .then(data => this.setState({ tasksInWeek: data }));
+      .then(tasksInWeek => this.setState({ tasksInWeek }));
   }
-  createNewTask = (day) => {
-    this.props.history.push(`tasklist/newtask?day=${day}`);
-  };
-  getDay = () => {
-    return this.props.location.search.replase(/\D+/, '');
-  };
   createNewTask = (day) => {
     this.props.history.push(`tasklist/newtask?day=${day}`);
   };
@@ -47,9 +42,10 @@ export class TaskList extends Component {
                 }}>
                   {task.title}
                 </Link>
+                <button className="stuff done"></button>
               </li>)}
             </ol>
-            <button onClick={() => this.createNewTask(index)}>Add new</button>
+            <button className="btn" onClick={() => this.createNewTask(index)}>Add new</button>
           </Tab>))
         }
       </Tabs>

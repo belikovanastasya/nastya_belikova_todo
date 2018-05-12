@@ -6,7 +6,7 @@ import { Form } from '../Form';
 export const CreateUser = ({ history }) => {
   const create = (user) => {
     createUser(user)
-      .then((user) => {
+      .then(() => {
         history.push('/success');
       });
   };

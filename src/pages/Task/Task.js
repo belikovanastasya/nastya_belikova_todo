@@ -1,13 +1,10 @@
 import './task.scss';
 import { getTask, updateTask, createTask } from '../../servises/tasks';
-
+import { days } from '../../servises'
 
 export class Task extends Component {
   constructor(props) {
     super(props);
-
-    this.days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
-
     this.state = {
       title: '',
       description: '',
@@ -51,7 +48,7 @@ export class Task extends Component {
       <form
         onSubmit={this.updateTask}
       >
-        <p>Day: {this.days[day]}</p>
+        <p>Day: {days[day]}</p>
         <input
           type="text"
           name="title"

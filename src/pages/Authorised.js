@@ -1,16 +1,20 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { TaskList, Task, Main } from '../components';
-import { User, NotFound, Gallery } from '../pages';
+//import {  } from '../components';
+import { User, NotFound, Gallery, TaskList, Task, Main } from '../pages';
 
 
-export const Autorised = ({ user }) => {
+export const Authorised = ({ user }) => {
   return (
     <Switch>
-      <Route path="/" exact component={Main} />
+      <Route
+        path="/"
+        exact
+        render={() => <Main user={user} />}
+      />
       <Route
         path="/home"
         exact
-        render={props => <Main {...props} user={user} />}
+        render={() => <Main user={user} />}
       />
       <Route
         path="/user"

@@ -17,12 +17,12 @@ export class Invitation extends Component {
   render() {
     return (
       <div className="invitation">
-        {/* <p>Hello, { this.props.user.firstName}</p> */}
+        <p>Hello, { this.props.user.firstName}</p>
         <div>You have {this.state.total} tasks</div>
         <div>Done: {this.state.done}</div>
         <div>In Progress: {this.state.inProgress}</div>
         <div>Waiting: {this.state.waiting}</div>
-        <a href="task.html">Go to the task list</a>
+        <a href="/tasklist">Go to the task list</a>
       </div>
     );
   }

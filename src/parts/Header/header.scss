@@ -21,3 +21,27 @@ header{
     }
     
 }
+.btn{
+    width: 200px;
+    height: 50px;
+    background: #fff;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    transition: all .5s ease;
+    color: #009999;
+    margin-right: 20px;
+    transition: all .5s ease;
+    text-transform: uppercase;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover{
+        background: #006363;
+        color: #fff;
+        border: 1px solid #fff;
+    }
+    &.active{
+      background: #009990; 
+      color: #fff 
+    }
+}  

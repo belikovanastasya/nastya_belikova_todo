@@ -21,9 +21,9 @@ export class Header extends Component {
       <header className="header">
         <div className="wrapper">
           <a href="/" className="logo">Logo</a>
-          {this.props.user && <button onClick={this.logOut}>Logout</button>}
+          {this.props.user && <button className="btn"  onClick={this.logOut}>Logout</button>}
           <Navigation user={this.props.user} />
-          {!this.props.user && <button className="createUser" onClick={() => this.setState({ createUser: true })}>Create User</button>}
+          {!this.props.user && <button className="btn" onClick={() => this.setState({ createUser: true })}>Create User</button>}
           {this.state.createUser && <Redirect to="/createuser" />}
         </div>
       </header>

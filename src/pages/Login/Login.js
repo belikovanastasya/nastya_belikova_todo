@@ -29,7 +29,10 @@ export class Login extends Component {
       .then((data) => {
         this.props.onLogin(data);
       })
-      .catch(err => console.log('Can\'t login', err));
+      .catch(err => {
+        console.log('Can\'t login', err);
+        this.setState({showLoader: false})
+      });
   }
   render() {
     return (

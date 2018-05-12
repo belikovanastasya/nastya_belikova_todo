@@ -1,5 +1,5 @@
 import { Authorised } from './Authorised';
-import { NonAuthorised } from './NonAuthorised';
+import { NonAuthorised } from './Nonauthorised';
 
 
 export class Pages extends Component {

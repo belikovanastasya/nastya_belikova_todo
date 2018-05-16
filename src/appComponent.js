@@ -1,41 +1,52 @@
 import React from 'react';
-import { Header } from './Header';
-import { Main } from './Main';
-import { Footer } from './Footer';
-import { Pages } from './Pages';
-import { Route } from 'react-router-dom'
+import { Header, Footer } from './parts';
+import { Pages } from './pages';
+import { checkUser } from './servises';
 import './appComponent.scss';
+import { ToastContainer } from 'react-toastr';
+import { errObserver } from './servises/observer';
 
-// export const App = () => (
-//   <React.Fragment>
-//     <Header />
-//     <Pages />
-//     <Footer />
-//   </React.Fragment>
-// );
+
 export class App extends Component {
   state = {
-    login: true,
-    user: ''
+    user: undefined
   }
- 
-  setLoginState = (login, user) => {
-    this.setState({ login, user });
+  setLoginState = (user) => {
+    this.setState({ user });
+  }
+  componentDidMount() {
+    checkUser()
+      .then((data) => {
+        this.setLoginState(data);
+      })
+      .catch(err => {
+        this.setLoginState(null);
+        console.log('Can\'t login', err)
+      });
+      errObserver.addObserver((err = 'Something wrong') => this.state.user !== undefined && this.container.error(
+        <strong>{err}</strong>,
+        <em>Error</em>
+      ));
   }
   render() {
-    const { login, user } = this.state;
- 
-    return ( <React.Fragment>
+    const { user } = this.state;
+    return (<React.Fragment>
+      <ToastContainer
+          ref={ref => this.container = ref}
+          className="toast-top-right"
+        />
       <Header
-        login={login}
         setLoginState={this.setLoginState}
         user={user}
       />
+      {user !== undefined ?
       <Pages
-        login={login} 
-        setLoginState={this.setLoginState} />
-        <Footer /> 
-        </React.Fragment>
-  );
+          user={user}
+          setLoginState={this.setLoginState}
+        />
+       : 'Checking'}
+      <Footer />
+    </React.Fragment>
+    );
+  }
 }
- }

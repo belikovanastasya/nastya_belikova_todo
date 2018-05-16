@@ -60,7 +60,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env', 'react'],
-            plugins: ['syntax-dynamic-import', 'transform-class-properties']
+            plugins: ['syntax-dynamic-import', 'transform-class-properties', 'transform-object-rest-spread']
           }
         }
       },

@@ -1,0 +1,36 @@
+nav{
+    ul{
+        display: flex;
+       list-style: none;
+       li{
+           margin-right: 10px;
+           position: relative;
+           &:nth-child(1){
+               margin-right: 50px;
+           }
+            
+           a{
+            &.active{
+                color: #006363
+           }
+           
+           }
+           &:hover{
+               &:after{
+                   width: 100%;
+               }
+           }
+           &:after{
+               content: "";
+               width: 0%;
+               height: 2px;
+               position: absolute;
+               bottom:-2px;
+               left: 0;
+               background: #ffffff;
+               transition: all 0.5s ease;
+           }
+       }
+
+    }
+}

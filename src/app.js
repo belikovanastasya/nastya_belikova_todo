@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { App } from './appComponent';
 
 
-
 const Root = (
   <Router>
     <App />

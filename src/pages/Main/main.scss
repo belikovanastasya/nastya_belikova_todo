@@ -1,0 +1,108 @@
+main{
+    width: 100%;
+    height: calc(100vh - 200px);
+    background: #006363;
+    .wrapper{ 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        height: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px;
+        .box_1{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            height: 100%;
+            padding: 15px;   
+            border: 1px inset #ffffff;  
+            margin-bottom: 15px;    
+            ul{
+                width: 25%;
+                padding: 50px 50px;
+                height: 100%;
+                li{
+                    cursor: pointer;
+                    margin-bottom: 10px;
+                }
+            }
+               
+        }      
+
+    }
+}
+.box_2, .box_3, .box_4, .box_5{
+    width: 100%;
+    padding: 50px;
+    border: 1px inset #ffffff;
+    margin-bottom: 20px;
+    button{
+        width: 200px;
+        height: 50px;
+        background: #fff;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        transition: all .5s ease;
+        color: #009999;
+        margin-right: 20px;
+        transition: all .5s ease;
+        text-transform: uppercase;
+        font-size: 14px;
+        cursor: pointer;
+        &:hover{
+            background: #006363;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+        &.active{
+          background: #009990; 
+          color: #fff 
+        }
+    }  
+}
+.box_3{
+    min-height: 470px;
+    display: flex;
+    justify-content: space-between; 
+    .editBox{
+        margin-right: 20px;
+    }
+}
+.box_3{
+    min-height: 510px
+}
+
+.tasksList{
+    div{
+        margin-bottom: 10px;
+    }
+    p{
+        margin-bottom: 10px;
+    }
+    a{
+        text-decoration: underline;
+    }
+}
+.modal{
+    padding: 10px;
+    border: 1px solid #ffffff;
+    width: 200px;
+}
+main{
+    height: 100%;
+    min-height: calc(100vh - 200px)
+}
+.geopos{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left
+}

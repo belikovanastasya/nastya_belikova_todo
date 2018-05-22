@@ -1,6 +1,8 @@
 import { userInfo } from '../../servises/users';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export class Invitation extends Component {
+export class InvitationComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +19,7 @@ export class Invitation extends Component {
   render() {
     return (
       <div className="invitation">
-        <p>Hello, { this.props.user.firstName}</p>
+        <p>Hello, { this.props.user.data.firstName}</p>
         <div>You have {this.state.total} tasks</div>
         <div>Done: {this.state.done}</div>
         <div>In Progress: {this.state.inProgress}</div>
@@ -27,3 +29,10 @@ export class Invitation extends Component {
     );
   }
 }
+
+
+
+const mapStoreToProps = state => ({
+  user: state.user
+})
+export const Invitation = withRouter(connect(mapStoreToProps)(InvitationComponent));

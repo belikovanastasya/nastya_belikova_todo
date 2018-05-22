@@ -1,16 +1,16 @@
 import './main.scss';
 import { Invitation } from './Invitation';
 
-export class Main extends Component {
-  render() {
+
+export const Main = () => {
     return (
       <main>
         <div className="wrapper">
           <div className="box_5">
-            <Invitation user={this.props.user}/>
+            <Invitation/>
           </div>
         </div>
       </main>
     );
-  }
 }
+

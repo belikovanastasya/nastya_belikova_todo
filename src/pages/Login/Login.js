@@ -1,6 +1,9 @@
 
 import './login.scss';
 import { login } from '../../servises';
+import { setUser } from '../../store';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 
 export const Loader = () => {
@@ -11,7 +14,7 @@ export const Loader = () => {
   );
 };
 
-export class Login extends Component {
+export class LoginComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,12 +25,11 @@ export class Login extends Component {
     const { email, password } = e.target;
     e.preventDefault();
     this.setState({ showLoader: true });
-    // setTimeout(() => {
-    //   this.props.onLogin(true, value);
-    // }, 2000);
+
     login({email: email.value, password: password.value})
       .then((data) => {
-        this.props.onLogin(data);
+        this.props.dispatch(setUser({data}));
+        
       })
       .catch(err => {
         console.log('Can\'t login', err);
@@ -63,3 +65,8 @@ export class Login extends Component {
     );
   }
 }
+
+const mapStoreToProps = state => ({
+  user: state.user
+})
+export const Login = withRouter(connect(mapStoreToProps)(LoginComponent));

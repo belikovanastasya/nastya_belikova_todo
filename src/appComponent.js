@@ -5,31 +5,34 @@ import { checkUser } from './servises';
 import './appComponent.scss';
 import { ToastContainer } from 'react-toastr';
 import { errObserver } from './servises/observer';
+import { connect } from 'react-redux';
+import { setUser } from './store';
+import { removeUser } from './store';
+import { withRouter } from 'react-router-dom';
 
-
-export class App extends Component {
-  state = {
-    user: undefined
-  }
+export class AppComponent extends Component {
+  // state = {
+  //   user: undefined
+  // }
   setLoginState = (user) => {
-    this.setState({ user });
+    this.props.dispatch(setUser(user));
   }
   componentDidMount() {
     checkUser()
       .then((data) => {
-        this.setLoginState(data);
+        this.props.dispatch(setUser(user));
       })
       .catch(err => {
-        this.setLoginState(null);
+        this.props.dispatch(removeUser())
         console.log('Can\'t login', err)
       });
-      errObserver.addObserver((err = 'Something wrong') => this.state.user !== undefined && this.container.error(
+      errObserver.addObserver((err = 'Something wrong') => this.props.user !== false && this.container.error(
         <strong>{err}</strong>,
         <em>Error</em>
       ));
   }
   render() {
-    const { user } = this.state;
+    const { user } = this.props;
     return (<React.Fragment>
       <ToastContainer
           ref={ref => this.container = ref}
@@ -42,7 +45,6 @@ export class App extends Component {
       {user !== undefined ?
       <Pages
           user={user}
-          setLoginState={this.setLoginState}
         />
        : 'Checking'}
       <Footer />
@@ -50,3 +52,7 @@ export class App extends Component {
     );
   }
 }
+const mapStoreToProps = state => ({
+  user: state.user
+})
+export const App = withRouter(connect(mapStoreToProps)(AppComponent));

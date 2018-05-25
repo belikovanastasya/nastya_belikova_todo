@@ -1,22 +1,27 @@
 import './user.scss';
 import { Form } from '../../components/Form';
 import { updateUser } from '../../servises/users';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-
-export class User extends Component {
-  saveUser = (user) => {
+export const UserComponent = ({ user, dispatch}) => {
+  const saveUser = (user) => {
     updateUser(user)
-      .then(user => console.log(user))
+      .then(() => this.props.dispatch(updateUser(user)))
       .catch(err => console.log('Can\'t update', err));
-  }
-  render() {
+  }; 
     return (
       <Form
         disabled={['email']}
         skipped={['password', 'repeatPassword']}
-        data={this.props.user}
-        onSubmit={this.saveUser}
+        data={user}
+        onSubmit={saveUser}
       />
     );
-  }
 }
+
+
+const mapStoreToProps = state => ({
+  user: state.user
+})
+export const User = withRouter(connect(mapStoreToProps)(UserComponent));

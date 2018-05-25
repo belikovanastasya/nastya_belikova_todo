@@ -8,7 +8,7 @@ export class Tabs extends React.Component {
     this.state = { id: props.selectedIndex };
   }
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.selectedIndex !== selectedIndex.lastRow) {
+    if (nextProps.selectedIndex !== prevState.id) {
       return {
         id: nextProps.selectedIndex
       };

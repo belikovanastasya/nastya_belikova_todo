@@ -1,15 +1,13 @@
 import './task.scss';
 import { getTask, updateTask, createTask } from '../../servises/tasks';
-import { days } from '../../servises'
+import { days } from '../../constants';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-export class Task extends Component {
+
+export class TaskComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: '',
-      description: '',
-      id: null
-    };
   }
 
   componentDidMount() {
@@ -21,7 +19,9 @@ export class Task extends Component {
     }
 
     getTask(task)
-      .then(task => this.setState({ ...task }));
+    .then((task) => console.log(task))  
+      //.then(task => this.setState({ ...task }));
+    //.then(() => this.props.dispatch(setTask({task})))
   }
 
   getDay() {
@@ -77,4 +77,10 @@ export class Task extends Component {
     );
   }
 }
+
+
+const mapStoreToProps = state => ({
+  task: state.task
+})
+export const Task = withRouter(connect(mapStoreToProps)(TaskComponent));
 

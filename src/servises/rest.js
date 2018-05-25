@@ -18,7 +18,6 @@ export const request = (url, method = 'GET', body, options) => {
       if (data.error) {
         return Promise.reject(data.error);
       }
-
       return Promise.resolve(data);
     });
 

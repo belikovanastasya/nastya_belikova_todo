@@ -11,9 +11,6 @@ import { removeUser } from './store';
 import { withRouter } from 'react-router-dom';
 
 export class AppComponent extends Component {
-  // state = {
-  //   user: undefined
-  // }
   setLoginState = (user) => {
     this.props.dispatch(setUser(user));
   }
@@ -39,8 +36,6 @@ export class AppComponent extends Component {
           className="toast-top-right"
         />
       <Header
-        setLoginState={this.setLoginState}
-        user={user}
       />
       {user !== undefined ?
       <Pages

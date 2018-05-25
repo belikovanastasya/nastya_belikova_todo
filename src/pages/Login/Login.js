@@ -28,7 +28,7 @@ export class LoginComponent extends Component {
 
     login({email: email.value, password: password.value})
       .then((data) => {
-        this.props.dispatch(setUser({data}));
+        this.props.dispatch(setUser(data));
         
       })
       .catch(err => {

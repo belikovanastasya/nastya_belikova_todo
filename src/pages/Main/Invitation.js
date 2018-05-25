@@ -19,7 +19,7 @@ export class InvitationComponent extends Component {
   render() {
     return (
       <div className="invitation">
-        <p>Hello, { this.props.user.data.firstName}</p>
+        <p>Hello, { this.props.user.firstName}</p>
         <div>You have {this.state.total} tasks</div>
         <div>Done: {this.state.done}</div>
         <div>In Progress: {this.state.inProgress}</div>

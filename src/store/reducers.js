@@ -1,4 +1,4 @@
-import { SET_USER, UPDATE_USER, REMOVE_USER } from './actions';
+import { SET_USER, UPDATE_USER, REMOVE_USER, ADD_TASK, SET_TASK, UPDATE_TASK } from './actions';
 
 // it is typical reducer
 // action should be an object with next pattern:
@@ -17,14 +17,17 @@ export const user = (state = false, { type, data}) => {
   return state;
 };
 
-// export const todo = (state = [], action) => {
-//   switch (action.type) {
-//     case ADD_TASK: {
-//       const newState = [...state, action.task];
-//       return newState;
-//     }
-//   }
+export const task = (state = { title: '', description: '', id: null }, action) => {
+  switch (action.type) {
+    case ADD_TASK:
+    case SET_TASK:
+    case UPDATE_TASK: {
+      const newState = [...state, action.task];
+      console.log(newState)
+      return newState;
+    }
+  }
 
-//   return state;
-// };
+  return state;
+};
  

@@ -3,6 +3,7 @@ import { getTask, updateTask, createTask } from '../../servises/tasks';
 import { days } from '../../constants';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { setTask, updateCurrentTask } from '../../store';
 
 
 export class TaskComponent extends Component {
@@ -14,14 +15,12 @@ export class TaskComponent extends Component {
     const { task } = this.props.match.params;
 
     if (task === 'newtask') {
-      this.setState({ day: this.getDay() });
+      this.props.dispatch(updateCurrentTask({ day: this.getDay() }));
       return;
     }
 
     getTask(task)
-    .then((task) => console.log(task))  
-      //.then(task => this.setState({ ...task }));
-    //.then(() => this.props.dispatch(setTask({task})))
+      .then((task) => this.props.dispatch(setTask( task )))
   }
 
   getDay() {
@@ -30,19 +29,19 @@ export class TaskComponent extends Component {
 
   updateTask = (event) => {
     const { task } = this.props.match.params;
-    const promise = task === 'newtask' ? createTask(this.state) : updateTask(this.state);
+    const promise = task === 'newtask' ? createTask(this.props.task) : updateTask(this.props.task);
     event.preventDefault();
     promise
       .then(() => this.props.history.push('/tasklist'));
   };
   onChange = (event) => {
     const { target } = event;
+    this.props.dispatch(updateCurrentTask({ [target.name]: target.value }))
 
-    this.setState({ [target.name]: target.value });
   }
 
   render() {
-    const { title, description, day } = this.state;
+    const { title, description, day } = this.props.task;
 
     return (
       <form
@@ -52,7 +51,7 @@ export class TaskComponent extends Component {
         <input
           type="text"
           name="title"
-          value={title}
+          value={this.props.task.title}
           onChange={this.onChange}
           placeholder="Enter a title"
           required
@@ -80,7 +79,7 @@ export class TaskComponent extends Component {
 
 
 const mapStoreToProps = state => ({
-  task: state.task
+  task: state.current_task
 })
 export const Task = withRouter(connect(mapStoreToProps)(TaskComponent));
 

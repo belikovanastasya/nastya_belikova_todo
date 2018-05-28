@@ -9,10 +9,11 @@ export class Tabs extends React.Component {
   }
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.selectedIndex !== prevState.id) {
-      return {
+      return {  
         id: nextProps.selectedIndex
       };
     }
+    return  null;
   }
   clickTab = (id) => {
     this.setState({ id });

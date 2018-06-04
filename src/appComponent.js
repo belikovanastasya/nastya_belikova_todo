@@ -17,7 +17,7 @@ export class AppComponent extends Component {
   componentDidMount() {
     checkUser()
       .then((data) => {
-        this.props.dispatch(setUser(user));
+        this.props.dispatch(setUser(data));
       })
       .catch(err => {
         this.props.dispatch(removeUser())
